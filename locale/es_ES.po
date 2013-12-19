@@ -1,0 +1,29 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.dunning:"
+msgid ""
+"New dunnings are generated and pending to done:\n"
+"\n"
+"%s"
+msgstr ""
+"Se han creado nuevas reclamaciones y se encuentran pendientes de realizar:\n"
+"\n"
+"%s"
+
+msgctxt "error:account.dunning:"
+msgid "[%s] New dunnings generated"
+msgstr "[%s] Se han creado nuevas reclamaciones"
+
+msgctxt "field:account.configuration,dunning_group_cron:"
+msgid "Dunning Group Cron"
+msgstr "Grupo reclamaciones cron"
+
+msgctxt "model:ir.cron,name:cron_account_dunning"
+msgid "Generate Today Dunning"
+msgstr "Crea reclamaciones para hoy"
+
+msgctxt "model:res.user,name:user_generate_account_dunning"
+msgid "Cron Account Dunning"
+msgstr "Cron Reclamaciones"

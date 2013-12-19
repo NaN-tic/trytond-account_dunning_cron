@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- This file is part account_dunning_cron module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.user" id="user_generate_account_dunning">
+            <field name="login">user_cron_internal_account_dunning</field>
+            <field name="name">Cron Account Dunning</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group" id="user_generate_account_dunning_group">
+            <field name="user" ref="user_generate_account_dunning"/>
+            <field name="group" ref="account_dunning.group_dunning"/>
+        </record>
+
+        <record model="ir.cron" id="cron_account_dunning">
+            <field name="name">Generate Today Dunning</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_generate_account_dunning"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="number_calls">-1</field>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">account.dunning</field>
+            <field name="function">generate_today_dunnings</field>
+        </record>
+    </data>
+</tryton>
