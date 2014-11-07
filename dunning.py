@@ -1,10 +1,10 @@
-#This file is part account_dunning_cron module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains 
-#the full copyright notices and license terms.
+# This file is part account_dunning_cron module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import get_smtp_server
-from trytond.config import CONFIG
+from trytond.config import config
 import logging
 
 from email.mime.text import MIMEText
@@ -75,7 +75,7 @@ class Dunning:
                 ('\n'.join(records)),
                 raise_exception=False)
 
-            from_addr = CONFIG.get('smtp_default_from_email')
+            from_addr = config.get('smtp_default_from_email')
             to_addr = list(set(emails))
 
             msg = MIMEText(body, _charset='utf-8')
