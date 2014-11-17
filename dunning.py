@@ -75,7 +75,7 @@ class Dunning:
                 ('\n'.join(records)),
                 raise_exception=False)
 
-            from_addr = config.get('smtp_default_from_email')
+            from_addr = config.get('email', 'from')
             to_addr = list(set(emails))
 
             msg = MIMEText(body, _charset='utf-8')
