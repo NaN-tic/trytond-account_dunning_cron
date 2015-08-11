@@ -5,13 +5,14 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import get_smtp_server
 from trytond.config import config
-import logging
-
 from email.mime.text import MIMEText
 from email.header import Header
+import logging
 
 __all__ = ['Dunning']
 __metaclass__ = PoolMeta
+
+logger = logging.getLogger(__name__)
 
 
 class Dunning:
@@ -63,7 +64,7 @@ class Dunning:
             emails = [user.email for user in users if user.email]
 
             if not emails:
-                logging.getLogger('account dunning cron').info(
+                logger.info(
                     'Unable to deliver dunny email. '
                     'Add email dunning group users')
 
@@ -88,6 +89,6 @@ class Dunning:
                 server.sendmail(from_addr, ', '.join(to_addr), msg.as_string())
                 server.quit()
             except Exception, exception:
-                logging.getLogger('account dunning cron').info(
+                logger.info(
                     'Unable to deliver email (%s):\n %s'
                     % (exception, msg.as_string()))
