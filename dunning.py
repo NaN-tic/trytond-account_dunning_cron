@@ -69,7 +69,7 @@ class Dunning:
 
         if emails:
             subject = cls.raise_user_error('request_title',
-                (Transaction().cursor.dbname),
+                (Transaction().database.name),
                 raise_exception=False)
             body = cls.raise_user_error('request_body',
                 ('\n'.join(records)),
