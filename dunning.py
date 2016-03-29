@@ -9,12 +9,12 @@ from email.header import Header
 import logging
 
 __all__ = ['Dunning']
-__metaclass__ = PoolMeta
 
 logger = logging.getLogger(__name__)
 
 
 class Dunning:
+    __metaclass__ = PoolMeta
     __name__ = 'account.dunning'
 
     @classmethod

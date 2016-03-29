@@ -6,10 +6,10 @@ from trytond.model import fields
 
 
 __all__ = ['Configuration']
-__metaclass__ = PoolMeta
 
 
 class Configuration:
+    __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
     dunning_group_cron = fields.Property(fields.Many2One('res.group',
             'Dunning Group Cron'))
