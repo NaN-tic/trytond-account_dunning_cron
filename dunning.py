@@ -3,7 +3,7 @@
 # the full copyright notices and license terms.
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.tools import get_smtp_server
+from trytond.sendmail import sendmail
 from email.mime.text import MIMEText
 from email.header import Header
 import logging
@@ -83,11 +83,4 @@ class Dunning:
             msg['From'] = from_addr
             msg['Subject'] = Header(subject, 'utf-8')
 
-            try:
-                server = get_smtp_server()
-                server.sendmail(from_addr, ', '.join(to_addr), msg.as_string())
-                server.quit()
-            except Exception, exception:
-                logger.info(
-                    'Unable to deliver email (%s):\n %s'
-                    % (exception, msg.as_string()))
+            sendmail(from_addr, to_addr, msg)
